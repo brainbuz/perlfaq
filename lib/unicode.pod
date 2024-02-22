@@ -63,12 +63,11 @@ If your program intends to only compare a two line file to see if the lines are 
 
  # remove it via character name
  use charnames ':full';
- $firstline =~ s/^\N{ZERO WIDTH NO-BREAK SPACE}//d;
+ $firstline =~ s/^\N{ZERO WIDTH NO-BREAK SPACE}//;
  # remove it by hex value
  $firstline =~ s/^\x{FeFF}//;
- # remove by stripping leading non word chars if appropriate in your
-situation
  # \s does not match the BOM!
+ # but it is matched as a non-word character
  $firstline =~ s/^\W+//;
 
 =head2 YAML and JSON
